@@ -76,4 +76,52 @@ a3 = selection2([6,5,3,68,8,23,4,54,534])
 
 print(a3)
     
+
+def insertion(a):
+    for i in range(1, len(a)):
+        next_unsorted = a[i]
+        insert_index = i
         
+        while insert_index > 0 and next_unsorted < a[insert_index -1]:
+            a[insert_index] = a[insert_index-1]
+            insert_index +=-1
+        a[insert_index] = next_unsorted
+    return a
+            
+        
+a4 = insertion([1,5,3,5,25,346,34])
+
+print(a4)
+def mergeSort(nlist):
+    print("Splitting ",nlist)
+    if len(nlist)>1:
+        mid = len(nlist)//2
+        lefthalf = nlist[:mid]
+        righthalf = nlist[mid:]
+
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+        i=j=k=0       
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] < righthalf[j]:
+                nlist[k]=lefthalf[i]
+                i=i+1
+            else:
+                nlist[k]=righthalf[j]
+                j=j+1
+            k=k+1
+
+        while i < len(lefthalf):
+            nlist[k]=lefthalf[i]
+            i=i+1
+            k=k+1
+
+        while j < len(righthalf):
+            nlist[k]=righthalf[j]
+            j=j+1
+            k=k+1
+    print("Merging ",nlist)
+
+nlist = [4,4,5,2,1,3,6,7,7,9,6,5,423,423,5,235,23,523,765,889,6,978,31,4,16,4,86]
+mergeSort(nlist)
+print(nlist)
