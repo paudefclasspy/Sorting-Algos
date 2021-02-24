@@ -125,3 +125,23 @@ def mergeSort(nlist):
 nlist = [4,4,5,2,1,3,6,7,7,9,6,5,423,423,5,235,23,523,765,889,6,978,31,4,16,4,86]
 mergeSort(nlist)
 print(nlist)
+
+
+def quicksort(a):
+    if len(a)<=1:
+        return a
+    pivot = a.pop()
+    smaller = []
+    larger = []
+    equal = []
+    
+    for x in a:
+        if x < pivot:
+            smaller.append(x)
+        elif x == pivot:
+            equal.append(x)
+        else:
+            larger.append(x)
+    return quicksort(smaller) + [pivot] + quicksort(equal) + quicksort(larger)
+a2 = quicksort([1,3,5,5,5,5,5,5,7,3,5,8,4])
+print(a2)
